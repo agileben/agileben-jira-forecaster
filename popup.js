@@ -73,8 +73,8 @@ async function displayDataTable(csvUrl) {
       console.log('Tab selected: ' + id)
       console.log('Sending message to get csv url');
       if (chrome.tabs === undefined) {
-        console.error('chrome.tabs is undefined opening local test file');
-        displayDataTable('/test2.csv');
+        console.log('chrome.tabs is undefined opening local test file');
+        displayDataTable('/test/test2.csv');
       } else {
 
         chrome.tabs.sendMessage(id, { action: 'get_csv_url' }, async (response) => {
