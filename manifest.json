@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "AgileBen JIRA Filter Forecaster",
+  "version": "0.0.1",
+  "description": "Adds an Analyse button to Jira filters.  Uses python and bokeh library to do charting and forecasting.",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.datatables.net; img-src 'self' data: https://cdn.datatables.net; object-src 'none'; connect-src 'self' https://pypi.org https://files.pythonhosted.org http://127.0.0.1:3000 https://*.atlassian.net",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_action": "popup.html",
+    "default_title": "AgileBen JIRA Filter Forecaster"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "downloads",
+    "http://*/",
+    "https://*/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "lib/*"
+  ]
+}

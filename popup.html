@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>CSV Viewer</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
+  <script src="lib/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+  <script src="lib/jquery.dataTables.min.js"></script>
+  <script src="lib/papaparse.min.js"></script>
+  <script src="lib/pyodide/pyodide.js"></script>
+  <!-- Add BokehJS library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/3.1.0/bokeh.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/3.1.0/bokeh-widgets.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/3.1.0/bokeh-tables.min.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+  }
+</style>
+
+<body>
+  <h1>CSV Viewer</h1>
+  <table id="csvDataTable" class="display" style="width: 100%;"></table>
+  <table id="csvDataTable2" class="display" style="width: 100%;"></table>
+  <div id="bokeh_plot">
+    <h1>Loading analysis</h1>
+  </div>
+  <script src="popup.js"></script>
+  <script src="pyode.js"></script>
+
+</body>
+
+</html>
