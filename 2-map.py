@@ -49,6 +49,10 @@ grouped_issues = grouped_issues.pivot_table(index=['Epic Link Summary', 'Issue T
 # Remove the column index
 grouped_issues.columns.index = None
 
+# Ensure the 'To Do' column exists, if not, create it with 0 for all rows
+if 'To Do' not in grouped_issues.columns:
+    grouped_issues['To Do'] = 0
+
 
 # Add a total column
 grouped_issues['Open'] = grouped_issues['To Do'] + grouped_issues['In Progress']

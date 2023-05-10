@@ -22,7 +22,7 @@ p_bar.vbar(x='Date', top='Number Created', width=timedelta(days=1)*0.5, color='b
 p_bar.vbar(x='Date', bottom=0, top='Negative Number Resolved', width=timedelta(days=1)*0.5, color='red', source=source, legend_label='Resolved')
 
 # Create a line chart for open issues
-p_bar.line(x='Date', y='Open', source=source, legend_label='Open Issues', line_color='green')
+p_bar.line(x='Date', y='Open', source=source, legend_label='Open Issues', line_color='green', line_width=2)
 
 # Plot the forecasts within the 80% confidence interval for open issues
 for i in range(100):
