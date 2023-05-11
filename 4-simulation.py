@@ -31,7 +31,7 @@ def run_simulation(weeks_to_forecast):
     print("running simulation with weeks_to_forecast", weeks_to_forecast)
 
     # Filter issue_summary_daily to consider only the last X days  
-    last_X_days =  issue_summary_daily.sort_values(['Week', 'Day'], ascending=False).head(days_history)
+    last_X_days =  issue_summary_daily.sort_values(['Date'], ascending=False).head(days_history)
     # Select the 'Number Created' and 'Number Resolved' columns from the filtered data
     last_X_days_created = last_X_days['Number Created'].values
     last_X_days_resolved = last_X_days['Number Resolved'].values
