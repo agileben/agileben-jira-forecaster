@@ -1,3 +1,4 @@
+
 function initBokehPlot(docs_json) {
   // convert docs_json string to an object
   docs_json = JSON.parse(docs_json);
