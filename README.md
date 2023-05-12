@@ -26,7 +26,9 @@ Most of the code was written by ChatGPT over a weekend.
 - In 'Manage Extensions' click the reload icon
 
 
-
+## Inspiration
+- Inspired by the generous publications of [Troy Magennis's analysis excel tools](https://github.com/FocusedObjective/FocusedObjective.Resources) and 
+- the tool [ActionableAgile by 55 Degrees](https://actionableagile.com/)
 
 Licence:
 - This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. (c) Ben Hogan 2023
