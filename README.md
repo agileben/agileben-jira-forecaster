@@ -23,6 +23,7 @@ Most of the code was written by ChatGPT over a weekend.
 
 ## Experimenting with code changes locally
 - To change the number of weeks to forecast or days history to include in the simulation make changes in [```simulation.py```](https://github.com/agileben/agileben-jira-forecaster/blob/3064ccef822f2af1e3db0574fa24dd84f7aba1a4/4-simulation.py#L25) 
+- In 'Manage Extensions' click the reload icon
 
 
 
