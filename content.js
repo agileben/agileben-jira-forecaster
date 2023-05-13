@@ -35,11 +35,11 @@ function addButton(selector) {
         jiraExportTriggerElement.click();
   
         setTimeout(() => {
-          const currentCsvFieldsElement = document.querySelector('#currentCsvFields');
+          const currentCsvFieldsElement = document.querySelector('#allCsvFields');
           if (currentCsvFieldsElement) {
             sendResponse({ csvUrl: currentCsvFieldsElement.href });
           } else {
-            console.error('Element with ID #currentCsvFields not found');
+            console.error('Element with ID #allCsvFields not found');
           }
         }, 500);
       } else {

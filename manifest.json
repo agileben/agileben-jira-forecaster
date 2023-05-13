@@ -18,7 +18,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://*.atlassian.net/issues/*", "http://127.0.0.1:3000/test/*"],
+      "matches": ["https://*.atlassian.net/*", "http://127.0.0.1:3000/test/*"],
       "js": ["content.js"],
       "run_at": "document_end"
     }

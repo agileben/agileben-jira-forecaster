@@ -40,6 +40,12 @@ def map_status(status):
 # Add a new column 'Status Group' to the DataFrame using the custom mapping function
 df['Status Group'] = df['Status'].apply(map_status)
 
+#If no column 'Epic Link Summary' exists, create it and copy the 'Parent Summary' column
+if 'Epic Link Summary' not in df.columns:
+    if 'Parent summary' in df.columns:
+        df['Epic Link Summary'] = df['Parent summary']
+
+
 # Group by Epic Link Summary, Issue Type, and Status Group
 grouped_issues = df.groupby(['Epic Link Summary', 'Issue Type', 'Status Group']).size().reset_index(name='count')
 
@@ -52,6 +58,14 @@ grouped_issues.columns.index = None
 # Ensure the 'To Do' column exists, if not, create it with 0 for all rows
 if 'To Do' not in grouped_issues.columns:
     grouped_issues['To Do'] = 0
+
+
+if 'In Progress' not in grouped_issues.columns:
+    grouped_issues['In Progress'] = 0
+
+if 'Done' not in grouped_issues.columns:
+    grouped_issues['Done'] = 0
+
 
 
 # Add a total column
