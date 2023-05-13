@@ -2,3 +2,4 @@ lib
 test
 .DS_Store
 dist
+*.zip
