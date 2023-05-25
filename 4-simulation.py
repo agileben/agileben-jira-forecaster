@@ -21,9 +21,9 @@ def monte_carlo_simulation_from_data(created_data, resolved_data, days, simulati
         resolved_results.append(resolved_count)
     return created_results, resolved_results
 
-num_simulations = 10000
+num_simulations = 1000
 days_history = 14
-forecast_weeks = 15
+forecast_weeks = 12
 
 
 def run_simulation(weeks_to_forecast):
@@ -36,7 +36,7 @@ def run_simulation(weeks_to_forecast):
     last_X_days_created = last_X_days['Number Created'].values
     last_X_days_resolved = last_X_days['Number Resolved'].values
     # template the forecast_weeks into the heading
-    heading("Forecasting the next {} weeks".format(forecast_weeks), "Using the last {} days of data. This table shows the input to the monte-carlo simulation with 10000 runs.".format(days_history))
+    heading("Forecasting the next {} weeks".format(forecast_weeks), "Using the last {} days of data. This table shows the input to the monte-carlo simulation with {} runs.".format(days_history,num_simulations))
 
     show(data_table_from_dataframe(last_X_days))
 
@@ -77,10 +77,31 @@ resolved_filtered = resolved_simulation_results_df[(resolved_simulation_results_
 created_filtered_no_total = created_filtered.drop(columns='Total')
 resolved_filtered_no_total = resolved_filtered.drop(columns='Total')
 
-print("Total Number of Stories Created in simulation:")
-for confidence, (lower_bound, upper_bound) in created_percentiles.items():
-    print(f"{confidence}% Confidence: {lower_bound:.0f} - {upper_bound:.0f}")
+# print("Total Number of Stories Created in simulation:")
+# for confidence, (lower_bound, upper_bound) in created_percentiles.items():
+#     print(f"{confidence}% Confidence: {lower_bound:.0f} - {upper_bound:.0f}")
 
-print("Total Number of Stories Resolved in simulation:")
-for confidence, (lower_bound, upper_bound) in resolved_percentiles.items():
-    print(f"{confidence}% Confidence: {lower_bound:.0f} - {upper_bound:.0f}")
+# print("Total Number of Stories Resolved in simulation:")
+# for confidence, (lower_bound, upper_bound) in resolved_percentiles.items():
+#     print(f"{confidence}% Confidence: {lower_bound:.0f} - {upper_bound:.0f}")
+
+
+# TODO convert data from format
+# { "50": [ 100, 200 ], "80": [50, 250]}
+# into 
+# Confidence level | Lower bound | Upper Bound
+# 50 | 100 | 200
+# 80 | 50 | 250
+created_confidence_df = pd.DataFrame(list(created_percentiles.items()), columns=["Confidence level", "Bounds"])
+created_confidence_df[['Lower bound', 'Upper Bound']] = pd.DataFrame(created_confidence_df['Bounds'].tolist(), index=created_confidence_df.index)
+created_confidence_df = created_confidence_df.drop(['Bounds'], axis=1)
+print(created_confidence_df)
+heading("","Created items: simulated number of items at various confidence levels")
+show(data_table_from_dataframe(created_confidence_df))
+
+resolved_confidence_df = pd.DataFrame(list(resolved_percentiles.items()), columns=["Confidence level", "Bounds"])
+resolved_confidence_df[['Lower bound', 'Upper Bound']] = pd.DataFrame(resolved_confidence_df['Bounds'].tolist(), index=resolved_confidence_df.index)
+resolved_confidence_df = resolved_confidence_df.drop(['Bounds'], axis=1)
+print(resolved_confidence_df)
+heading("","Resolved items: simulated number of items at various confidence levels")
+show(data_table_from_dataframe(resolved_confidence_df))

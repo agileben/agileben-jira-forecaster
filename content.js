@@ -10,7 +10,7 @@ function addButton(selector) {
       button.style.backgroundColor = 'yellow';
   
       button.addEventListener('click', () => {
-        console.log('Button clicked, sending message to open tab');
+        console.log('Button clicked, sending message to open tab ', window.location.href);
         chrome.runtime.sendMessage({ action: 'open_tab', current_tab: window.location.href });
       });
       
@@ -32,11 +32,14 @@ function addButton(selector) {
     if (request.action === 'get_csv_url') {
       const jiraExportTriggerElement = document.querySelector('#jira-export-trigger');
       if (jiraExportTriggerElement) {
+        console.log('Found jira export trigger element - clicking it');
         jiraExportTriggerElement.click();
   
         setTimeout(() => {
           const currentCsvFieldsElement = document.querySelector('#allCsvFields');
           if (currentCsvFieldsElement) {
+
+            console.log('Found csv fields element - sending response', currentCsvFieldsElement.href);
             sendResponse({ csvUrl: currentCsvFieldsElement.href });
           } else {
             console.error('Element with ID #allCsvFields not found');

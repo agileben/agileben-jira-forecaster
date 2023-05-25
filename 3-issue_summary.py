@@ -43,5 +43,6 @@ issue_summary_weekly = issue_summary_daily.groupby('Date').agg({'Number Created'
 
 # Sort the DataFrame by 'Week' and then 'Day'
 issue_summary_daily = issue_summary_daily.sort_values(['Date'], ascending=False)
-#show(data_table_from_dataframe(issue_summary_daily))
+heading("Issues Created and Resolved", "By date, with net change per day.")
+show(data_table_from_dataframe(issue_summary_daily))
 
