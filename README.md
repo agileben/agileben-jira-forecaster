@@ -12,6 +12,14 @@ The charts use the python library Bokeh.
 
 Most of the code was written by ChatGPT over a weekend.
 
+## Now available on the Chrome Web Store
+
+Released to the Chrome Web Store: [get it here](https://chrome.google.com/webstore/detail/agileben-jira-filter-fore/ibnaoiepdopjpbpmelhlhdbopicfjgfo)
+
+- Upgraded to using a background worker: no longer blocks the page while running
+- Added code viewer and "re-run" button to allow experimenting with analysis code
+- Upgraded to latest Chrome Plugin V3 Manifest
+
 ## Alpha Testing - Installation Instructions
 
 - Download latest code: https://github.com/agileben/agileben-jira-forecaster/archive/refs/heads/main.zip
