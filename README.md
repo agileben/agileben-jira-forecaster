@@ -35,10 +35,13 @@ Released to the Chrome Web Store: [get it here](https://chrome.google.com/websto
 
 ## Screenshots
 
+Adds a button to the JIRA filter page (top right)
 ![Adds a button](button.png)
 
-![Creates a Report](report.png)
-
+Creates a forecast report
+![Creates a Report](full-report.png)
+- The report is interactive: you can zoom in and out of the charts
+- You can also download the charts as a PNG or SVG
 
 
 ## Inspiration

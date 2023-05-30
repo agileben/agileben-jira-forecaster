@@ -31,15 +31,16 @@ from js import data
 dataIO = StringIO(data)
 df = pd.read_csv(dataIO)
 # List of columns to drop
-cols_to_drop = ['Issue id', 'Assignee Id', 'Components', 'Custom', 'Watchers', 'Attachment', 'Description', 'Comment', 'Inward', 'Outward']
-# Drop each column in the df that starts with the text in one of the items in the drop list
-df = df[df.columns.drop(list(df.filter(regex='^(' + '|'.join(cols_to_drop) + ')')))] 
+cols_to_drop = ['Issue id', 'Assignee Id', 'Components', 'Custom', 'Watchers', 'Attachment', 'Description', 'Comment', 'Inward', 'Outward', 'Project', 'estimate','Estimate', 'Id', 'Time Spent','Work Ratio', 'Security Level', 'Environment']
+
+# Drop any column that includes the text in the cols_to_drop list
+df = df[df.columns.drop([col for col in df.columns if any(substring in col for substring in cols_to_drop)])]
 
 # order the first columns using the following list then add the remaining columns: Created,Resolved,Issue Type,Issue key,Issue id,Summary,Assignee
-col_order = ['Created', 'Resolved', 'Issue Type', 'Issue key', 'Summary', 'Assignee', 'Status', 'Epic Link Summary']
+col_order = ['Created', 'Resolved', 'Issue Type', 'Issue key', 'Summary', 'Assignee', 'Status', 'Epic Link Summary', 'Parent summary']
 
-# reorder the columns
-df = df[col_order + [col for col in df.columns if col not in col_order]]
+# Reorder the columns
+df = df[[col for col in col_order if col in df.columns] + [col for col in df.columns if col not in col_order]]
 
 
 df['Created'] = pd.to_datetime(df['Created'], infer_datetime_format=True)

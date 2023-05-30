@@ -21,7 +21,7 @@ def monte_carlo_simulation_from_data(created_data, resolved_data, days, simulati
         resolved_results.append(resolved_count)
     return created_results, resolved_results
 
-num_simulations = 1000
+num_simulations = 5000
 days_history = 14
 forecast_weeks = 12
 
