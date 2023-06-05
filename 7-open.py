@@ -55,5 +55,5 @@ bounds_source = ColumnDataSource(bounds_data)
 p_bar.line(x='Date', y='UpperBoundOpen', source=bounds_source, legend_label='90% Confidence', line_color='green', line_dash='dashed', line_width=2)
 p_bar.line(x='Date', y='LowerBoundOpen', source=bounds_source, legend_label='10% Confidence', line_color='orange', line_dash='dashed', line_width=2)
 
-
+p_bar.legend.location = "top_left"
 show(p_bar)

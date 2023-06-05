@@ -184,7 +184,7 @@ async function addTextArea(name, script, context) {
         <span class="float-right ">
         <button id="button-${outputId}" class="bg-green-400 hover:bg-green-600 cursor-pointer p-1 rounded-md text-xs">Re-Run</button></span></span>
         </summary>
-        <textarea class="p-1 w-full h-40 text-xs bg-slate-500 scroll-m-2 text-green-700 font-mono">${script}</textarea>
+        <textarea id="text-${outputId}" class="p-1 w-full h-40 text-xs bg-slate-500 scroll-m-2 text-green-700 font-mono">${script}</textarea>
         </details></div>
         <div id="${outputId}"></div>
     `;
@@ -195,7 +195,10 @@ async function addTextArea(name, script, context) {
   // Add the onclick event listener to the new button
   document.getElementById(`button-${outputId}`).onclick = (event) => {
     console.log("clicked run with div id: ", outputId);
-    var results = runPy({ ...context, output: outputId }, script);
+    // get script from element text-${outputId}
+    const updatedScript = document.getElementById(`text-${outputId}`).value;
+    console.log("updated script: ", updatedScript);
+    var results = runPy({ ...context, output: outputId }, updatedScript);
     addMessage(results, outputId);
   };
 

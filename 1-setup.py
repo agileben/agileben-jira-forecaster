@@ -31,7 +31,7 @@ from js import data
 dataIO = StringIO(data)
 df = pd.read_csv(dataIO)
 # List of columns to drop
-cols_to_drop = ['Issue id', 'Assignee Id', 'Components', 'Custom', 'Watchers', 'Attachment', 'Description', 'Comment', 'Inward', 'Outward', 'Project', 'estimate','Estimate', 'Id', 'Time Spent','Work Ratio', 'Security Level', 'Environment']
+cols_to_drop = ['Issue id', 'Assignee Id', 'Components', 'Custom', 'Watchers', 'Attachment', 'Description', 'Comment', 'Inward', 'Outward', 'Project', 'estimate','Estimate', 'Id', 'Time Spent','Work Ratio', 'Security Level', 'Environment', 'Labels','Sprint','Satisfaction', 'Votes']
 
 # Drop any column that includes the text in the cols_to_drop list
 df = df[df.columns.drop([col for col in df.columns if any(substring in col for substring in cols_to_drop)])]
